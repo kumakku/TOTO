@@ -13,6 +13,11 @@
         <div>
             <p>タイトル：{{ $post->title }}</p>
             <p>本文：{{ $post->body }}</p>
+            @if($post->image_url)
+                <div>
+                    <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+                </div>
+            @endif
             <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
         </div>
         <div>
