@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <x-app-layout>
     <head>
         <meta charset="utf-8">
         <title>Blog</title>
@@ -24,4 +25,5 @@
             {{ $posts->links() }}
         </div>
     </body>
+    </x-app-layout>
 </html>
