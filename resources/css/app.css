@@ -6,6 +6,10 @@ a{
     @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
 }
 
+h2{
+    @apply font-bold;
+}
+
 .center1{
     @apply h-screen w-screen flex justify-center;
 }
