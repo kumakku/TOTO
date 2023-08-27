@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('index') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
@@ -73,8 +73,14 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('my_prof')" :active="request()->routeIs('my_prof')">
+                {{ __('Mypage') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                {{ __('投稿一覧') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('create')" :active="request()->routeIs('create')">
+                {{ __('投稿') }}
             </x-responsive-nav-link>
         </div>
 

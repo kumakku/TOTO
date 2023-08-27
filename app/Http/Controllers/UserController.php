@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Fo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +33,14 @@ class UserController extends Controller
             $button_text = "フォローする";
         }
         return view('users/user_prof')->with(['followers' => $followers, 'followees' => $followees, 'user' => $user, 'button_text' => $button_text, 'posts' => $posts]);
+    }
+    
+    public function follow(User $followee){
+        $user=Auth::user();
+        
+        $user->followees()->sync($followee->id,false);
+        
+        return redirect()->back();
     }
     
     public function user_all_followers(User $user)

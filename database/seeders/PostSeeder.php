@@ -52,7 +52,7 @@ class PostSeeder extends Seeder
             'title' => 'テスト用',
             'body' => 'あああ'.PHP_EOL.'aaa',
             'category_id' => 3,
-            'university_id' => 3,
+            'university_id' => 4,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);  
