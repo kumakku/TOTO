@@ -39,6 +39,7 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
 
 Route::controller(UserController::class)->middleware(['auth'])->group(function(){
     Route::get('/users', 'my_prof')->name('my_prof');
+    Route::get('/users/followees', 'followees_all_posts')->name('followees_all_posts');
     Route::get('/users/{user}',  'user_prof')->name('user_prof');
     Route::get('/users/{user}/followers',  'user_all_followers')->name('user_all_followers');
     Route::get('/users/{user}/followees',  'user_all_followees')->name('user_all_followees');

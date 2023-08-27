@@ -49,4 +49,17 @@ class UserController extends Controller
         $followees = User::find($user_id)->followees()->orderBy('id')->get();
         return view('users/user_all_followees')->with(['followees' => $followees, 'user' => $user]);
     }
+    
+    public function followees_all_posts()
+    {
+        $login_user_id = auth()->id();
+        // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
+        $followees = User::find($login_user_id)->followees()->orderBy('id')->get();
+        $followees_id = [];
+        foreach($followees as $followee){
+            array_push($followees_id, $followee->id);
+        }
+        $posts = Post::whereIn('user_id', $followees_id)->get();
+        return view('users/followees_all_posts')->with(['followees' => $followees, 'posts' => $posts]);
+    }
 }
