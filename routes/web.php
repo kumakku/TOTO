@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,8 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::get('/users/{user}/followers', [PostController::class, 'user_all_followers'])->name('user_all_followers');
     Route::get('/users/{user}/followees', [PostController::class, 'user_all_followees'])->name('user_all_followees');
     Route::get('/categories/{category}', [CategoryController::class,'index']);
+    Route::get('/like/{id}', [LikeController::class, 'like']);
+    Route::get('/unlike/{id}', [LikeController::class, 'unlike']);
 });
 
 Route::get('/dashboard', function () {
