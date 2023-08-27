@@ -10,6 +10,7 @@
 <!--これまであったコード        <form action="/posts" method="POST">　-->
         <form action="/posts" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="post[user_id]" value="{{Auth::id()}}">
             <div>
                 <h2>タイトル</h2>
                 <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>

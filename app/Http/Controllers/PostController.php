@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
+use App\Models\Comment;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Cloudinary;  //dev4_画像アップロード
 
 
@@ -51,6 +55,15 @@ class PostController extends Controller
         $post->fill($input_post)->save();
 
         return redirect('/posts/' . $post->id);
+    }
+    
+    
+
+    public function comment(Comment $comment, Request $request){
+        $input=$request['comment'];
+        $comment->fill($input)->save();
+        
+        return redirect('/posts/' . $comment->post_id);
     }
 
 }
