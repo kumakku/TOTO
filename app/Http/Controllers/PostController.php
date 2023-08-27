@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostController extends Controller
@@ -47,37 +48,7 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
     }
     
-    public function user_prof(User $user)
-    {
-        $login_user_id = auth()->id();
-        $user_id = $user->id;
-        // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
-        $followers = User::find($user_id)->followers()->orderBy('id')->get();
-        $followees = User::find($user_id)->followees()->orderBy('id')->get();
-        if (DB::table('follows')->where('followee_id', $user_id)->where('follower_id', $login_user_id)->exists())
-        {
-            $button_text = "フォロー解除";
-        } else {
-            $button_text = "フォローする";
-        }
-        return view('users/user_prof')->with(['followers' => $followers, 'followees' => $followees, 'user' => $user, 'button_text' => $button_text]);
-    }
     
-    public function user_all_followers(User $user)
-    {
-        $user_id = $user->id;
-        // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
-        $followers = User::find($user_id)->followers()->orderBy('id')->get();
-        return view('users/user_all_followers')->with(['followers' => $followers, 'user' => $user]);
-    }
-    
-    public function user_all_followees(User $user)
-    {
-        $user_id = $user->id;
-        // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
-        $followees = User::find($user_id)->followees()->orderBy('id')->get();
-        return view('users/user_all_followees')->with(['followees' => $followees, 'user' => $user]);
-    }
 
     public function comment(Comment $comment, Request $request){
         $input=$request['comment'];

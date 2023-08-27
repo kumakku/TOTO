@@ -16,7 +16,9 @@
                     <p>タイトル：{{ $post->title }}</p>
                     <p>本文：{{ $post->body }}</p>
                     <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
+                    @if($post->user_id==auth()->id())
                     <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
+                    @endif
                 </div>
                 <div>
                     <a href="/">戻る</a>
@@ -42,7 +44,9 @@
                     <div style='border:solid 1px; margin-bottom: 10px;'>
                         <div>
                             <p>
-                                {{$comment->user->name}}
+                                <a href="{{route('user_prof',['user'=>$comment->user_id])}}">
+                                    {{$comment->user->name}}
+                                </a>
                             </p>
                         </div>
                         <div>
