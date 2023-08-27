@@ -49,6 +49,7 @@
                     </p>
                     <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
                 </div>
+            @endforeach
                 <div>
                     {{ $posts->links() }}
                 </div>

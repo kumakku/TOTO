@@ -77,6 +77,7 @@ class PostController extends Controller
         // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
         $followees = User::find($user_id)->followees()->orderBy('id')->get();
         return view('users/user_all_followees')->with(['followees' => $followees, 'user' => $user]);
+    }
 
     public function comment(Comment $comment, Request $request){
         $input=$request['comment'];
