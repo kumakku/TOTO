@@ -8,40 +8,61 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <div class="container">
+        <div class="window">
             <div class="posts-show">
-                <h1>投稿一覧</h2>
-                <a href='/posts/create'>新規投稿</a>
+                <h1>投稿一覧</h1>
                 <div class="posts">
                     @foreach ($posts as $post)
-                        <div class="post" style='border:solid 1px; margin-bottom: 10px;'>
-                            <p>
-                                ユーザー名：<a href="/users/{{$post->user_id}}">{{ $post->user->name }}</a>
-                            </p>
-                            <p>
-                                タイトル：<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                            </p>
-                            @if($post->image_url)
-                            <div>
-                                <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+                        <div class="post">
+                            <h2>
+                                <a href="/posts/show/{{ $post->id }}">{{ $post->title }}</a>
+                            </h2>
+                            <div class="detail">  
+                              <p class="college"><a href="#">{{ $post->college }}</a></p>
+                              <p class="category"><a href="#">[{{ $post->category }}]</a></p>
                             </div>
-                            @endif
-                            <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
-                            <p>大学名：<a href="/universities/{{ $post->university->id }}">{{ $post->university->name }}</a></p>
-                            <p>♡　{{ $post->likes->count() }}</p>
-                            <div>
-                                @if($post->is_liked_by_auth_user())
-                                    <a href="/unlike/{{ $post->id }}" class="btn btn-success btn-sm">いいね  <span class="badge">{{ $post->likes->count() }}</span></a>
-                                @else
-                                    <a href="/like/{{ $post->id }}" class="btn btn-secondary btn-sm">いいね  <span class="badge">{{ $post->likes->count() }}</span></a>
-                                @endif
+                            <div class="content">
+                              <p>{{ $post->body }}</p>
+                            </div>
+                            <class="post-img" img src="{{ $post->image }}" alt="画像を表示できません。">
+                            <div class="info">
+                              <div class="comments">
+                                <a href="#">コメント</a>
+                              </div>
+                                <div class="likes">
+                                    @if($post->is_liked_by_auth_user())
+                                        <a href="/unlike/{{ $post->id }}" class="btn btn-success btn-sm">いいね  <span>{{ $post->likes->count() }}</span></a>
+                                    @else
+                                        <a href="/like/{{ $post->id }}" class="btn btn-secondary btn-sm">いいね  <span>{{ $post->likes->count() }}</span></a>
+                                    @endif
+                                </div>
+                              <p>{{ $post->name }}</p>
                             </div>
                         </div>
                     @endforeach
-                    </div>
-                <div>
-                    {{ $posts->links() }}
                 </div>
+                <div class="create-btn-area">
+                  <a class="create-btn" href='/posts/create'>新規投稿</a>
+                </div>
+            </div>
+            <div class="side-right">
+              <div class="follow-btn-area">
+                <a class="follow-btn" href='#'>フォロー中のみ</a>
+              </div>
+
+              <form action="#" method="post"> 
+                <select name="post[category]">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                <select name="post[callege]">
+                    @foreach ($universities as $university)
+                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                    @endforeach
+                </select>
+                <input type="submit" value="絞り込む">
+              </form>
             </div>
         </div>
     </body>
