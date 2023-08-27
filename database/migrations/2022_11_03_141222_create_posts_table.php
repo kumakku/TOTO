@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('body', 200);
             $table->string('image_url')->nullable();//dev4_画像アップロード
             $table->foreignId('category_id')->constrained();
+            $table->foreignId('university_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
         });

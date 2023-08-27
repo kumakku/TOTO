@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h2>カテゴリー:{{ $category_name }} の投稿一覧画面</h2>
+        <h2>大学名:{{ $university_name }} の投稿一覧画面</h2>
         <a href='/'>投稿一覧ページへ戻る</a>
         <div>
             @foreach ($posts as $post)

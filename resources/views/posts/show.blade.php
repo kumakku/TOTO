@@ -13,6 +13,9 @@
             <div class="center2">
                 <h1>詳細画面</h1>
                 <div style='border:solid 1px; margin-bottom: 10px;'>
+                    <p>
+                        ユーザー名：<a href="/users/{{$post->user_id}}">{{ $post->user->name }}</a>
+                    </p>
                     <p>タイトル：{{ $post->title }}</p>
                     <p>本文：{{ $post->body }}</p>
                     @if($post->image_url)
@@ -21,7 +24,7 @@
                         </div>
                     @endif
                     <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
-                    <p>大学名（今は中身カテゴリー）：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
+                    <p>大学名：<a href="/universities/{{ $post->university->id }}">{{ $post->university->name }}</a></p>
                     @if($post->user_id==auth()->id())
                     <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
                     @endif

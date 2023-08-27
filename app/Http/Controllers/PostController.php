@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\University;
 use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
@@ -24,9 +25,11 @@ class PostController extends Controller
         return view('posts/show')->with(['post' => $post]);
     }
 
-    public function create(Category $category)
+    public function create(Category $category, University $university)
     {
-        return view('posts/create')->with(['categories' => $category->get()]);
+        return view('posts/create')->with([
+            'categories' => $category->get(),
+            'universities' => $university->get()]);
     }
 
     public function store(Post $post, Request $request)
