@@ -28,6 +28,9 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::put('/posts/{post}',  [PostController::class, 'update'])->name('update');
     Route::delete('/posts/{post}',  [PostController::class, 'delete'])->name('delete');
     Route::get('/posts/{post}/edit',  [PostController::class, 'edit'])->name('edit');
+    Route::get('/users/{user}', [PostController::class, 'user_prof'])->name('user_prof');
+    Route::get('/users/{user}/followers', [PostController::class, 'user_all_followers'])->name('user_all_followers');
+    Route::get('/users/{user}/followees', [PostController::class, 'user_all_followees'])->name('user_all_followees');
     Route::get('/categories/{category}', [CategoryController::class,'index']);
 });
 
