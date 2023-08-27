@@ -59,8 +59,6 @@ class PostController extends Controller
 
         return redirect('/posts/' . $post->id);
     }
-    
-    
 
     public function comment(Comment $comment, Request $request){
         $input=$request['comment'];

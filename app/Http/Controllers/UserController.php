@@ -23,13 +23,15 @@ class UserController extends Controller
         // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
         $followers = User::find($user_id)->followers()->orderBy('id')->get();
         $followees = User::find($user_id)->followees()->orderBy('id')->get();
+        // $posts = DB::table('posts')->where('user_id', $user_id)->get();
+        $posts = Post::where('user_id', $user_id)->get();
         if (DB::table('follows')->where('followee_id', $user_id)->where('follower_id', $login_user_id)->exists())
         {
             $button_text = "フォロー解除";
         } else {
             $button_text = "フォローする";
         }
-        return view('users/user_prof')->with(['followers' => $followers, 'followees' => $followees, 'user' => $user, 'button_text' => $button_text]);
+        return view('users/user_prof')->with(['followers' => $followers, 'followees' => $followees, 'user' => $user, 'button_text' => $button_text, 'posts' => $posts]);
     }
     
     public function user_all_followers(User $user)
