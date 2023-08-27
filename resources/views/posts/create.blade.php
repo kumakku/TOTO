@@ -37,10 +37,10 @@
             </div>
             
             <div>
-                <h2>大学名（今は中身はカテゴリー）</h2>
-                <select name="post[category_id]">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <h2>大学名</h2>
+                <select name="post[university_id]">
+                    @foreach($universities as $university)
+                        <option value="{{ $university->id }}">{{ $university->name }}</option>
                     @endforeach
                 </select>
             </div>

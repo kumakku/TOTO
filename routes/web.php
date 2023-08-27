@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,10 @@ Route::controller(UserController::class)->middleware(['auth'])->group(function()
     Route::get('/users/{user}',  'user_prof')->name('user_prof');
     Route::get('/users/{user}/followers',  'user_all_followers')->name('user_all_followers');
     Route::get('/users/{user}/followees',  'user_all_followees')->name('user_all_followees');
+});
+
+Route::controller(UniversityController::class)->middleware(['auth'])->group(function(){
+    Route::get('/universities/{university}', 'index');
 });
 
 Route::get('/dashboard', function () {

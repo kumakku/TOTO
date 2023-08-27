@@ -16,11 +16,16 @@ class Post extends Model
         'body',
         'image_url',//dev4_画像アップロード
         'category_id',
+        'university_id',
     ];
   
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    
+    public function university(){
+        return $this->belongsTo(University::class);
     }
     
     public function likes()

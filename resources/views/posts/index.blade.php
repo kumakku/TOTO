@@ -27,6 +27,7 @@
                             </div>
                             @endif
                             <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
+                            <p>大学名：<a href="/universities/{{ $post->university->id }}">{{ $post->university->name }}</a></p>
                             <p>♡　{{ $post->likes->count() }}</p>
                             <div>
                                 @if($post->is_liked_by_auth_user())
