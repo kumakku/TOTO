@@ -15,7 +15,13 @@
                 <div style='border:solid 1px; margin-bottom: 10px;'>
                     <p>タイトル：{{ $post->title }}</p>
                     <p>本文：{{ $post->body }}</p>
+                    @if($post->image_url)
+                        <div>
+                            <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+                        </div>
+                    @endif
                     <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
+                    <p>大学名（今は中身カテゴリー）：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
                     @if($post->user_id==auth()->id())
                     <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
                     @endif

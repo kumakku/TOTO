@@ -21,6 +21,11 @@
                             <p>
                                 タイトル：<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                             </p>
+                            @if($post->image_url)
+                            <div>
+                                <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+                            </div>
+                            @endif
                             <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
                             <p>♡　{{ $post->likes->count() }}</p>
                             <div>
