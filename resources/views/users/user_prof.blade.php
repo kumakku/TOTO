@@ -27,7 +27,6 @@
         @if (auth()->id() == $user->id)
             <!--自分自身のページの場合はフォローボタンは不要-->
         @else
-            <button type="button" name="follow" onclick=”location.href=’/users/follow/{{$user->id}}’”>{{ $button_text }}</button>
             <a href="/users/follow/{{$user->id}}">{{ $button_text }}</a>
             <br>
         @endif

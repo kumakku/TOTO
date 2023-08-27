@@ -106,15 +106,15 @@ h2 {
   @apply inline-block text-3xl p-10 border-4 border-solid border-gray-300 rounded-full hover:bg-gray-300 hover:text-white;
 }
 
-form {
+.form5 {
   @apply w-4/5 mx-auto mt-80 flex flex-col;
 }
 
-select {
+.select5 {
   @apply mb-20 h-20 border-2;
 }
 
-input {
+.input5 {
   @apply border-2 w-2/5 h-20 mx-auto border-gray-300 rounded-full hover:bg-gray-300 hover:text-white;;
 }
 

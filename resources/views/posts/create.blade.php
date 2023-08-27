@@ -18,7 +18,6 @@
                       <div>
                           <br>
                           <h2>タイトル</h2>
-                          <p class="font-bold ...">The quick brown fox ...</p>
                           <div class="rounded-lg">
                           <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
                           </div>
