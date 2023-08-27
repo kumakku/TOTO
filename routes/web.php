@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,8 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::delete('/posts/{post}',  [PostController::class, 'delete'])->name('delete');
     Route::get('/posts/{post}/edit',  [PostController::class, 'edit'])->name('edit');
     Route::get('/categories/{category}', [CategoryController::class,'index']);
+    Route::get('/like/{id}', [LikeController::class, 'like']);
+    Route::get('/unlike/{id}', [LikeController::class, 'unlike']);
 });
 
 Route::get('/dashboard', function () {
