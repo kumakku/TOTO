@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('title', 50);
             $table->string('body', 200);
+            $table->string('image_url')->nullable();//dev4_画像アップロード
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
             $table->softDeletes();

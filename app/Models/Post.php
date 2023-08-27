@@ -14,6 +14,7 @@ class Post extends Model
         'user_id',
         'title',
         'body',
+        'image_url',//dev4_画像アップロード
         'category_id',
     ];
   
