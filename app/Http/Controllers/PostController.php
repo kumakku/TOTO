@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
+
 
 class PostController extends Controller
 {
@@ -75,6 +77,12 @@ class PostController extends Controller
         // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
         $followees = User::find($user_id)->followees()->orderBy('id')->get();
         return view('users/user_all_followees')->with(['followees' => $followees, 'user' => $user]);
+
+    public function comment(Comment $comment, Request $request){
+        $input=$request['comment'];
+        $comment->fill($input)->save();
+        
+        return redirect('/posts/' . $comment->post_id);
     }
 
 }
