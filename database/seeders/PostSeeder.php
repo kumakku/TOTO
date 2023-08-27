@@ -42,5 +42,16 @@ class PostSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
+        
+        for ($i=0; $i<10; $i++){
+        DB::table('posts')->insert([
+            'user_id' => '1',
+            'title' => 'テスト用',
+            'body' => 'あああ'.PHP_EOL.'aaa',
+            'category_id' => 3,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);  
+        }
     }
 }

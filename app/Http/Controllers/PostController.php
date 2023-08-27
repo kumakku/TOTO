@@ -56,23 +56,6 @@ class PostController extends Controller
 
         return redirect('/posts/' . $post->id);
     }
-    
-    
-    public function user_all_followers(User $user)
-    {
-        $user_id = $user->id;
-        // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
-        $followers = User::find($user_id)->followers()->orderBy('id')->get();
-        return view('users/user_all_followers')->with(['followers' => $followers, 'user' => $user]);
-    }
-    
-    public function user_all_followees(User $user)
-    {
-        $user_id = $user->id;
-        // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
-        $followees = User::find($user_id)->followees()->orderBy('id')->get();
-        return view('users/user_all_followees')->with(['followees' => $followees, 'user' => $user]);
-    }
 
     public function comment(Comment $comment, Request $request){
         $input=$request['comment'];
