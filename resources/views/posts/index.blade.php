@@ -24,7 +24,11 @@
                             <div class="content">
                               <p>{{ $post->body }}</p>
                             </div>
-                            <class="post-img" img src="{{ $post->image }}" alt="画像を表示できません。">
+                            @if($post->image_url)
+                                <div>
+                                    <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+                                </div>
+                            @endif
                             <div class="info">
                               <div class="comments">
                                 <a href="/posts/{{ $post->id }}">コメント</a>
@@ -43,6 +47,9 @@
                             </div>
                         </div>
                     @endforeach
+                    <div>
+                        {{ $posts->links() }}
+                    </div>
                 </div>
                 <div class="create-btn-area">
                   <a class="create-btn" href='/posts/create'>新規投稿</a>

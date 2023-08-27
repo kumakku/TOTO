@@ -42,9 +42,9 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-        <div>
-            {{ $posts->links() }}
+            <div>
+                {{ $posts->links() }}
+            </div>
         </div>
     </body>
     </x-app-layout>
