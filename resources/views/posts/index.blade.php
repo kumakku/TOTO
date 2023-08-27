@@ -16,6 +16,9 @@
                     @foreach ($posts as $post)
                         <div class="post" style='border:solid 1px; margin-bottom: 10px;'>
                             <p>
+                                ユーザー名：<a href="/users/{{$post->user_id}}">{{ $post->user->name }}</a>
+                            </p>
+                            <p>
                                 タイトル：<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                             </p>
                             <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
