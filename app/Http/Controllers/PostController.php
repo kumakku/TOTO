@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\University;
@@ -32,7 +33,7 @@ class PostController extends Controller
             'universities' => $university->get()]);
     }
 
-    public function store(Post $post, Request $request)
+    public function store(Post $post, PostRequest $request)
     {
         $input = $request['post'];
         if($request->file('image')){ //画像ファイルが送られた時だけ処理が実行される

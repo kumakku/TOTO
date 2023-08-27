@@ -45,7 +45,7 @@
                 </select>
             </div>
             
-            <input type="submit" value="投稿"/>
+            <input type="submit" class="form-submit" value="投稿"/>
         </form>
         <div><a href="/">一覧に戻る</a></div>
     </body>
