@@ -16,6 +16,9 @@
                     @foreach ($posts as $post)
                         <div class="post" style='border:solid 1px; margin-bottom: 10px;'>
                             <p>
+                                ユーザー名：<a href="/users/{{$post->user_id}}">{{ $post->user->name }}</a>
+                            </p>
+                            <p>
                                 タイトル：<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                             </p>
                             <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
@@ -35,24 +38,6 @@
                 </div>
             </div>
                     
-        <h1>チーム開発会へようこそ！</h1>
-        <h2>投稿一覧画面</h2>
-        <a href='/posts/create'>新規投稿</a>
-        <div>
-            @foreach ($posts as $post)
-                <div style='border:solid 1px; margin-bottom: 10px;'>
-                    <p>
-                        ユーザー名：<a>{{ $post->user->name }}</a>
-                    </p>
-                    <p>
-                        タイトル：<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                    </p>
-                    <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
-                </div>
-                <div>
-                    {{ $posts->links() }}
-                </div>
-            </div>
             <div class="side-right">
                 
             </div>
