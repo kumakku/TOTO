@@ -10,7 +10,7 @@
     </head>
     <body>
         @if (auth()->id() == $user->id)
-            @php $title_suffix = " (MyPage)"; @endphp
+            @php $title_suffix = " (Mypage)"; @endphp
         @else
             @php $title_suffix = ""; @endphp
         @endif
