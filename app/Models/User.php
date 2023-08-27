@@ -42,11 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user_id');
+    }
+    
     public function likes()
     {
         return $this->hasMany(Like::class, 'user_id');
     }
+    
     public function followers(){
         return $this->belongsToMany(User::class, 'follows', 'followee_id', 'follower_id');
     }
