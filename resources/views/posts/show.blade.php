@@ -9,15 +9,51 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>詳細画面</h1>
-        <div>
-            <p>タイトル：{{ $post->title }}</p>
-            <p>本文：{{ $post->body }}</p>
-            <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
-        </div>
-        <div>
-            <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
-            <a href="/">戻る</a>
+        <div class="center1">
+            <div class="center2">
+                <h1>詳細画面</h1>
+                <div style='border:solid 1px; margin-bottom: 10px;'>
+                    <p>タイトル：{{ $post->title }}</p>
+                    <p>本文：{{ $post->body }}</p>
+                    <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
+                    <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
+                </div>
+                <div>
+                    <a href="/">戻る</a>
+                </div>
+                
+                <br>
+                
+                <div class="input_comment">
+                    <form action="/posts/comment" method="POST">
+                        @csrf
+                        <input type="hidden" name="comment[user_id]" value="{{Auth::id()}}">
+                        <input type="hidden" name="comment[post_id]" value="{{$post->id}}">
+                        <label for="comment" class="form-label">コメント</label>
+                        <textarea id="comment" class="form-textarea" name="comment[body]" placeholder="コメントを入力してください" value="{{old('comment.body')}}" required></textarea>
+                        <input type="submit" class="form-submit" value="投稿"/>
+                    </form>
+                </div>
+                
+                <br>
+                
+                <div class="comments">
+                    @foreach($post->comments as $comment)
+                    <div style='border:solid 1px; margin-bottom: 10px;'>
+                        <div>
+                            <p>
+                                {{$comment->user->name}}
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                {{$comment->body}}
+                            </p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </body>
     </x-app-layout>
