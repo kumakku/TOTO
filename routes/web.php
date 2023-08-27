@@ -28,6 +28,7 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::post('/posts',  [PostController::class, 'store'])->name('store');
     Route::get('/posts/create',  [PostController::class, 'create'])->name('create');
     Route::post('/posts/comment', 'comment')->name('comment');
+    Route::get('/posts/filter', 'index_filter')->name('index_filter');
     Route::get('/posts/{post}',  [PostController::class, 'show'])->name('show');
     Route::put('/posts/{post}',  [PostController::class, 'update'])->name('update');
     Route::delete('/posts/{post}',  [PostController::class, 'delete'])->name('delete');
@@ -39,6 +40,7 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
 
 Route::controller(UserController::class)->middleware(['auth'])->group(function(){
     Route::get('/users', 'my_prof')->name('my_prof');
+    Route::get('/users/follow/{followee}', 'follow')->name('follow');
     Route::get('/users/{user}',  'user_prof')->name('user_prof');
     Route::get('/users/{user}/followers',  'user_all_followers')->name('user_all_followers');
     Route::get('/users/{user}/followees',  'user_all_followees')->name('user_all_followees');

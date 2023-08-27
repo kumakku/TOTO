@@ -15,48 +15,48 @@
                     <input type="hidden" name="post[user_id]" value="{{Auth::id()}}">
                     <div class="ml-4">
   
-                    <div>
-                        <br>
-                        <h2>タイトル</h2>
-                        <p class="font-bold ...">The quick brown fox ...</p>
-                        <div class="rounded-lg">
-                        <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
-                        </div>
-                        <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
-                    </div>
-                    <div>
-                        <br>
-                        <h2>本文</h2>
-                        <textarea name="post[body]" placeholder="ここに投稿内容を書こう">{{ old('post.body') }}</textarea>
-                        <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
-                    </div>
-                    
-                    <!--画像をアップロード-->
-                    <div class="image">
-                        <input type="file" name="image">
-                    </div>
-                    
-                    <div>
-                        <br>
-                        <h2>カテゴリー</h2>
-                        <select name="post[category_id]">
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <br>
-                        <h2>大学名</h2>
-                        <select name="post[university_id]">
-                            @foreach($universities as $university)
-                                <option value="{{ $university->id }}">{{ $university->name }}</option>
-                            @endforeach
-                        </select>
-                        <br>
-                        <br>
-                    </div>
+                      <div>
+                          <br>
+                          <h2>タイトル</h2>
+                          <p class="font-bold ...">The quick brown fox ...</p>
+                          <div class="rounded-lg">
+                          <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
+                          </div>
+                          <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
+                      </div>
+                      <div>
+                          <br>
+                          <h2>本文</h2>
+                          <textarea name="post[body]" placeholder="ここに投稿内容を書こう">{{ old('post.body') }}</textarea>
+                          <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
+                      </div>
+
+                      <!--画像をアップロード-->
+                      <div class="image">
+                          <input type="file" name="image">
+                      </div>
+
+                      <div>
+                          <br>
+                          <h2>カテゴリー</h2>
+                          <select name="post[category_id]">
+                              @foreach($categories as $category)
+                                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                              @endforeach
+                          </select>
+                      </div>
+
+                      <div>
+                          <br>
+                          <h2>大学名</h2>
+                          <select name="post[university_id]">
+                              @foreach($universities as $university)
+                                  <option value="{{ $university->id }}">{{ $university->name }}</option>
+                              @endforeach
+                          </select>
+                          <br>
+                          <br>
+                      </div>
                     
                     </div>
                 </div>
@@ -67,13 +67,6 @@
                 </form>
             </div>
         </div>
-        
-        
- 
-
-        
-        
-        
     </body>
     </x-app-layout>
 </html>

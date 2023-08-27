@@ -44,6 +44,28 @@
                 </div>
             </div>
         </div>
+        
+        <form action="/posts/filter" method="GET">
+            <div>
+                <h2>カテゴリー</h2>
+                <select name="filter[category_id]">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            
+            <div>
+                <h2>大学名</h2>
+                <select name="filter[university_id]">
+                    @foreach($universities as $university)
+                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <input type="submit" class="form-submit" value="検索"/>
+        </form>
+        
     </body>
     </x-app-layout>
 </html>
