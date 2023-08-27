@@ -15,13 +15,7 @@ class Post extends Model
         'body',
         'category_id',
     ];
-
-    public function getPaginateByLimit(int $limit_count = 5)
-    {
-        // updated_atで降順に並べたあと、limitで件数制限をかける
-        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
-    }
-
+  
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -31,6 +25,23 @@ class Post extends Model
     {
         return $this->hasMany(Like::class);
     }
+  
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+  
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function getPaginateByLimit(int $limit_count = 5)
+    {
+        // updated_atで降順に並べたあと、limitで件数制限をかける
+        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+
+    
     
     //投稿にいいねが付いているかの判定
     public function is_liked_by_auth_user()
@@ -47,5 +58,8 @@ class Post extends Model
         } else {
             return false;
         }
+
+    
     }
+    
 }

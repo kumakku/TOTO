@@ -25,10 +25,14 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::get('/', [PostController::class, 'index'])->name('index');
     Route::post('/posts',  [PostController::class, 'store'])->name('store');
     Route::get('/posts/create',  [PostController::class, 'create'])->name('create');
+    Route::post('/posts/comment',  [PostController::class, 'comment'])->name('comment');
     Route::get('/posts/{post}',  [PostController::class, 'show'])->name('show');
     Route::put('/posts/{post}',  [PostController::class, 'update'])->name('update');
     Route::delete('/posts/{post}',  [PostController::class, 'delete'])->name('delete');
     Route::get('/posts/{post}/edit',  [PostController::class, 'edit'])->name('edit');
+    Route::get('/users/{user}', [PostController::class, 'user_prof'])->name('user_prof');
+    Route::get('/users/{user}/followers', [PostController::class, 'user_all_followers'])->name('user_all_followers');
+    Route::get('/users/{user}/followees', [PostController::class, 'user_all_followees'])->name('user_all_followees');
     Route::get('/categories/{category}', [CategoryController::class,'index']);
     Route::get('/like/{id}', [LikeController::class, 'like']);
     Route::get('/unlike/{id}', [LikeController::class, 'unlike']);

@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('follows', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('title', 50);
-            $table->string('body', 200);
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('follower_id')->constrained('users');
+            $table->foreignId('followee_id')->constrained('users');
             $table->timestamps();
-            $table->softDeletes();
+            
+            $table->unique(['follower_id', 'followee_id']);
+            //follower-followeeの組が同じレコードが重複しないようにする
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('follows');
     }
 };
