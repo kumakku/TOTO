@@ -17,6 +17,11 @@ class UniversitySeeder extends Seeder
     public function run()
     {
         DB::table('universities')->insert([
+            'name' => 'なし',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('universities')->insert([
             'name' => '東京大学',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
