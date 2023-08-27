@@ -10,7 +10,7 @@
     </head>
     <body>
         @if (auth()->id() == $user->id)
-            @php $title_suffix = " (MyPage)"; @endphp
+            @php $title_suffix = " (Mypage)"; @endphp
         @else
             @php $title_suffix = ""; @endphp
         @endif
@@ -27,7 +27,8 @@
         @if (auth()->id() == $user->id)
             <!--自分自身のページの場合はフォローボタンは不要-->
         @else
-            <button type="button" name="follow">{{ $button_text }}</button>
+            <button type="button" name="follow" onclick=”location.href=’/users/follow/{{$user->id}}’”>{{ $button_text }}</button>
+            <a href="/users/follow/{{$user->id}}">{{ $button_text }}</a>
             <br>
         @endif
         

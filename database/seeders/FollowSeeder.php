@@ -17,29 +17,29 @@ class FollowSeeder extends Seeder
     public function run()
     {
         //
-        for ($i=0; $i<10; $i++){
-        DB::table('follows')->insert([
-            'follower_id' => $i+2,
-            'followee_id' => 1,
-            'created_at' => new DateTime(),
-            'updated_at' => new DateTime(),
-        ]);
-        }
-        for ($i=1; $i<8; $i++){
-        DB::table('follows')->insert([
-            'follower_id' => $i+2,
-            'followee_id' => 2,
-            'created_at' => new DateTime(),
-            'updated_at' => new DateTime(),
-        ]);
-        }
-        for ($i=2; $i<15; $i++){
-        DB::table('follows')->insert([
-            'follower_id' => $i+2,
-            'followee_id' => 3,
-            'created_at' => new DateTime(),
-            'updated_at' => new DateTime(),
-        ]);
-        }
+        // for ($i=0; $i<10; $i++){
+        // DB::table('follows')->insert([
+        //     'follower_id' => $i+2,
+        //     'followee_id' => 1,
+        //     'created_at' => new DateTime(),
+        //     'updated_at' => new DateTime(),
+        // ]);
+        // }
+        // for ($i=1; $i<8; $i++){
+        // DB::table('follows')->insert([
+        //     'follower_id' => $i+2,
+        //     'followee_id' => 2,
+        //     'created_at' => new DateTime(),
+        //     'updated_at' => new DateTime(),
+        // ]);
+        // }
+        // for ($i=2; $i<15; $i++){
+        // DB::table('follows')->insert([
+        //     'follower_id' => $i+2,
+        //     'followee_id' => 3,
+        //     'created_at' => new DateTime(),
+        //     'updated_at' => new DateTime(),
+        // ]);
+        // }
     }
 }

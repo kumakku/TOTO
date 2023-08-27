@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Fo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,6 +35,14 @@ class UserController extends Controller
         return view('users/user_prof')->with(['followers' => $followers, 'followees' => $followees, 'user' => $user, 'button_text' => $button_text, 'posts' => $posts]);
     }
     
+    public function follow(User $followee){
+        $user=Auth::user();
+        
+        $user->followees()->sync($followee->id,false);
+        
+        return redirect()->back();
+    }
+    
     public function user_all_followers(User $user)
     {
         $user_id = $user->id;
@@ -48,5 +57,18 @@ class UserController extends Controller
         // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
         $followees = User::find($user_id)->followees()->orderBy('id')->get();
         return view('users/user_all_followees')->with(['followees' => $followees, 'user' => $user]);
+    }
+    
+    public function followees_all_posts()
+    {
+        $login_user_id = auth()->id();
+        // $followers = DB::table('follows')->where('followee_id', $user_id)->get();
+        $followees = User::find($login_user_id)->followees()->orderBy('id')->get();
+        $followees_id = [];
+        foreach($followees as $followee){
+            array_push($followees_id, $followee->id);
+        }
+        $posts = Post::whereIn('user_id', $followees_id)->get();
+        return view('users/followees_all_posts')->with(['followees' => $followees, 'posts' => $posts]);
     }
 }
