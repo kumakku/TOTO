@@ -35,6 +35,15 @@
                 </select>
             </div>
             
+            <div>
+                <h2>大学名（今は中身はカテゴリー）</h2>
+                <select name="post[category_id]">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            
             <input type="submit" value="投稿"/>
         </form>
         <div><a href="/">一覧に戻る</a></div>

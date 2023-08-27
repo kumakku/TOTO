@@ -44,6 +44,10 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $input_post = $request['post'];
+        if($request->file('image')){ //画像ファイルが送られた時だけ処理が実行される
+            $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+            $input_post += ['image_url' => $image_url];
+            }
         $post->fill($input_post)->save();
 
         return redirect('/posts/' . $post->id);

@@ -19,6 +19,7 @@
                 </div>
             @endif
             <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
+            <p>大学名（今は中身カテゴリー）：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
         </div>
         <div>
             <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
