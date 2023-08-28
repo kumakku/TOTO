@@ -45,7 +45,7 @@
             @endforeach
         </div>
         <div>
-            {{ $posts->links() }}
+            {{ $posts->links('vendor.pagination.semantic-ui') }}
         </div>
     </body>
     </x-app-layout>

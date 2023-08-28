@@ -48,7 +48,7 @@
                         </div>
                     @endforeach
                     <div>
-                        {{ $posts->links() }}
+                        {{ $posts->links('vendor.pagination.semantic-ui') }}
                     </div>
                 </div>
                 <div class="create-btn-area">
